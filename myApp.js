@@ -1,11 +1,13 @@
-
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 if (process.env.NODE_ENV !== 'production') {
 	require('dotenv').load();
 }
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 
 // --> 7)  Mount the Logger middleware here
 app.use(function(req, res, next) {
